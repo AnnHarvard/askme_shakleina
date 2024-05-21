@@ -1,201 +1,202 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AskMe</title>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>AskMe</title>
 	<link rel="stylesheet" href="../static/css/bootstrap.css">
-  </head>
-  <body>
-    <nav class="navbar border-bottom border-dark" style="background-color: #F0FFF0;">
-      <div class="container-sm-fluid container-lg">
-        <a class="navbar-brand ">AskShakleina</a>
-        <form class="d-flex" role="search">
-          <input
-            class="form-control me-2 border-3"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-success" type="submit">ASK!</button>
-        </form>
+</head>
+<body>
+<nav class="navbar border-bottom border-dark" style="background-color: #F0FFF0;">
+	<div class="container-sm-fluid container-lg">
+		<a class="navbar-brand ">AskShakleina</a>
+		<form class="d-flex" role="search">
+			<input
+					class="form-control me-2 border-3"
+					type="search"
+					placeholder="Search"
+					aria-label="Search"
+			/>
+			<button class="btn btn-success" type="submit">ASK!</button>
+		</form>
 
-        <div class="d-flex justify-content-between gap-3">
-          <div>
-            <img src="../static/img//2233.jpg" class="rounded-5" width="50" height="50" alt=""/>
-          </div>
-          <div class="d-flex flex-column justify-content-between">
-            <div>Dr. Pepper</div>
-            <div>
-              <a href="/settings.html" class="me-2">Settings</a>
-              <a href="/logout.html">Log out</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+		<div class="d-flex justify-content-between gap-3">
+			<div>
+				<img src="{% static 'img/2233.jpg' %}" class="rounded-5" width="50" height="50" alt=""/>
+			</div>
+			<div class="d-flex flex-column justify-content-between">
+				<div>Dr. Pepper</div>
+				<div>
+					<a href="/settings.html" class="me-2">Settings</a>
+					<a href="/logout.html">Log out</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
 
-    <main class="container-fluid container-lg mt-3">
-      <div class="d-flex gap-3 align-items-center">
-        <h1>New Questions</h1>
-        <a href="/hot.html">Hot Questions</a>
-      </div>
+<main class="container-fluid container-lg mt-3">
+	<div class="d-flex gap-3 align-items-center">
+		<h1>New Questions</h1>
+		<a href="/hot.html">Hot Questions</a>
+	</div>
 
-      <div class="row">
-        <div class="col-9 pt-4">
-          <article class="card mb-3 w-100">
-            <div class="row g-0">
-              <div class="col-3 p-2">
-                <div class="border w-100 mb-3" style="height: 100px">
-                  <img
-                    src="../static/img//avatar.jpg"
-                    class="img-fluid rounded-start"
-                    alt="avatar"
-					style="width:100%; height: 100%"
-                  />
-                </div>
-                <div class="input-group flex-nowrap">
-                  <input type="number" value="5" class="form-control mx-5 border-2" />
-                </div>
-              </div>
-              <div class="col">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <a href="/question.html">How to build a Moon Park?</a>
-                  </h5>
-                  <p class="card-text">
-                    Guys, I have a trouble with a moon park. Can't find th black-jack...
-                  </p>
-                  <div class="row">
-                    <a class="col-4" href="/question.html">answers (3)</a>
-                    <div class="col-8">
-                      <span>Tags</span>
-                      <a href="/tag.html">black-jack</a>
-                      <a href="/tag.html">bender</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
+	<div class="row">
+		<div class="col-9 pt-4">
 			<article class="card mb-3 w-100">
-            <div class="row g-0">
-              <div class="col-3 p-2">
-                <div class="border w-100 mb-3" style="height: 100px">
-                  <img
-                    src="../static/img//avatar.jpg"
-                    class="img-fluid rounded-start"
-                    alt="avatar"
-					style="width:100%; height: 100%"
-                  />
-                </div>
-                <div class="input-group flex-nowrap">
-                  <input type="number" value="5" class="form-control mx-5 border-2" />
-                </div>
-              </div>
-              <div class="col">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <a href="/question.html">How to build a Moon Park?</a>
-                  </h5>
-                  <p class="card-text">
-                    Guys, I have a trouble with a moon park. Can't find th black-jack...
-                  </p>
-                  <div class="row">
-                    <a class="col-4" href="/question.html">answers (3)</a>
-                    <div class="col-8">
-                      <span>Tags</span>
-                      <a href="/tag.html">black-jack</a>
-                      <a href="/tag.html">bender</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
+				<div class="row g-0">
+					<div class="col-3 p-2">
+						<div class="border w-100 mb-3" style="height: 100px">
+							<img
+									src="{% static 'img/avatar.jpg' %}"
+									class="img-fluid rounded-start"
+									alt="avatar"
+									style="width:100%; height: 100%"
+							/>
+						</div>
+						<div class="input-group flex-nowrap">
+							<input type="number" value="5" class="form-control mx-5 border-2"/>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card-body">
+							<h5 class="card-title">
+								<a href="/question.html">How to build a Moon Park?</a>
+							</h5>
+							<p class="card-text">
+								Guys, I have a trouble with a moon park. Can't find th black-jack...
+							</p>
+							<div class="row">
+								<a class="col-4" href="/question.html">answers (3)</a>
+								<div class="col-8">
+									<span>Tags</span>
+									<a href="/tag.html">black-jack</a>
+									<a href="/tag.html">bender</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
 			<article class="card mb-3 w-100">
-            <div class="row g-0">
-              <div class="col-3 p-2">
-                <div class="border w-100 mb-3" style="height: 100px">
-                  <img
-                    src="../static/img//avatar.jpg"
-                    class="img-fluid rounded-start"
-                    alt="avatar"
-					style="width:100%; height: 100%"
-                  />
-                </div>
-                <div class="input-group flex-nowrap">
-                  <input type="number" value="5" class="form-control mx-5 border-2" />
-                </div>
-              </div>
-              <div class="col">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <a href="/question.html">How to build a Moon Park?</a>
-                  </h5>
-                  <p class="card-text">
-                    Guys, I have a trouble with a moon park. Can't find th black-jack...
-                  </p>
-                  <div class="row">
-                    <a class="col-4" href="/question.html">answers (3)</a>
-                    <div class="col-8">
-                      <span>Tags</span>
-                      <a href="/tag.html">black-jack</a>
-                      <a href="/tag.html">bender</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
+				<div class="row g-0">
+					<div class="col-3 p-2">
+						<div class="border w-100 mb-3" style="height: 100px">
+							<img
+									src="{% static 'img/avatar.jpg' %}"
+									class="img-fluid rounded-start"
+									alt="avatar"
+									style="width:100%; height: 100%"
+							/>
+						</div>
+						<div class="input-group flex-nowrap">
+							<input type="number" value="5" class="form-control mx-5 border-2"/>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card-body">
+							<h5 class="card-title">
+								<a href="/question.html">How to build a Moon Park?</a>
+							</h5>
+							<p class="card-text">
+								Guys, I have a trouble with a moon park. Can't find th black-jack...
+							</p>
+							<div class="row">
+								<a class="col-4" href="/question.html">answers (3)</a>
+								<div class="col-8">
+									<span>Tags</span>
+									<a href="/tag.html">black-jack</a>
+									<a href="/tag.html">bender</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+			<article class="card mb-3 w-100">
+				<div class="row g-0">
+					<div class="col-3 p-2">
+						<div class="border w-100 mb-3" style="height: 100px">
+							<img
+									src="{% static 'img/avatar.jpg' %}"
+									class="img-fluid rounded-start"
+									alt="avatar"
+									style="width:100%; height: 100%"
+							/>
+						</div>
+						<div class="input-group flex-nowrap">
+							<input type="number" value="5" class="form-control mx-5 border-2"/>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card-body">
+							<h5 class="card-title">
+								<a href="/question.html">How to build a Moon Park?</a>
+							</h5>
+							<p class="card-text">
+								Guys, I have a trouble with a moon park. Can't find th black-jack...
+							</p>
+							<div class="row">
+								<a class="col-4" href="/question.html">answers (3)</a>
+								<div class="col-8">
+									<span>Tags</span>
+									<a href="/tag.html">black-jack</a>
+									<a href="/tag.html">bender</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
 
 
-          <nav aria-label="...">
-            <ul class="pagination">
-              <li class="page-item disabled">
-                <a class="page-link">Previous</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item active" aria-current="page">
-                <a class="page-link" href="#">2</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-              </li>
-            </ul>
-        </nav>
-        </div>
-        <div class="col-3">
-          <h3>Popular Tags</h3>
-          <div class="row">
-            <div class="col">
-              <span class="badge text-dark fs-6">perl</span>
-              <span class="badge text-danger fs-5">python</span>
-              <span class="badge text-dark fs-6">TechnoPark</span>
-              <span class="badge text-danger fs-4">MySQL</span>
-              <span class="badge text-success fs-5">django</span>
-              <span class="badge text-danger fs-6">Mail.Ru</span>
-              <span class="badge text-dark fs-6">Voloshin</span>
-              <span class="badge text-warning fs-6">Firefox</span>
-            </div>
-          </div>
-          <h3 class="mt-5">Best Members</h3>
-          <div>
-            <a href="/member.html" class="d-block">Mr. Freeman</a
-            ><a href="/member.html" class="d-block">Mr. Heizenberg</a
-            ><a href="/member.html" class="d-block">Sam Smith</a
-            ><a href="/member.html" class="d-block">Chanel</a
-            ><a href="/member.html" class="d-block">Shakleina</a>
-          </div>
-        </div>
-      </div>
-    </main>
-    <footer class="fixed-bottom p-3 border-top border-dark" style="background-color: #F0FFF0;">
-      <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
-      </div>
-    </footer>
-    <script src="../static/js/bootstrap.bundle.js"></script>
-  </body>
+			<nav aria-label="...">
+				<ul class="pagination">
+					<li class="page-item disabled">
+						<a class="page-link">Previous</a>
+					</li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item active" aria-current="page">
+						<a class="page-link" href="#">2</a>
+					</li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item">
+						<a class="page-link" href="#">Next</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="col-3">
+			<h3>Popular Tags</h3>
+			<div class="row">
+				<div class="col">
+					<span class="badge text-dark fs-6">perl</span>
+					<span class="badge text-danger fs-5">python</span>
+					<span class="badge text-dark fs-6">TechnoPark</span>
+					<span class="badge text-danger fs-4">MySQL</span>
+					<span class="badge text-success fs-5">django</span>
+					<span class="badge text-danger fs-6">Mail.Ru</span>
+					<span class="badge text-dark fs-6">Voloshin</span>
+					<span class="badge text-warning fs-6">Firefox</span>
+				</div>
+			</div>
+			<h3 class="mt-5">Best Members</h3>
+			<div>
+				<a href="/member.html" class="d-block">Mr. Freeman</a
+				><a href="/member.html" class="d-block">Mr. Heizenberg</a
+			><a href="/member.html" class="d-block">Sam Smith</a
+			><a href="/member.html" class="d-block">Chanel</a
+			><a href="/member.html" class="d-block">Shakleina</a>
+			</div>
+		</div>
+	</div>
+</main>
+<footer class="fixed-bottom p-3 border-top border-dark" style="background-color: #F0FFF0;">
+	<div class="container">
+		<span class="text-muted">Place sticky footer content here.</span>
+	</div>
+</footer>
+<script src="../static/js/bootstrap.bundle.js"></script>
+</body>
 </html>

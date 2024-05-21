@@ -4,13 +4,16 @@
 
 {% block content %}
 	<div class="d-flex gap-3 align-items-center">
-		<h1>Hot Questions</h1>
-		<a href="/hot.html">New Questions</a>
+		<h1>Question</h1>
 	</div>
 	<div class="col-9 pt-4">
-		{% for question in questions %}
 			{% include 'layouts/question.html' with item=question %}
-		{% endfor %}
+
+		<hr>
+
+		{% include "layouts/answer.html" %}>
+		
+		
 		<nav aria-label="...">
 			<ul class="pagination">
 				<li class="page-item disabled">

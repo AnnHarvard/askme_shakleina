@@ -1,0 +1,50 @@
+{% load static %}
+<div class="d-flex gap-3 mb-3 align-items-center">
+	<h1>New Question</h1>
+</div>
+<div class="col-9 pt-4">
+	<div class="row mb-4">
+		<div class="col-2">
+			<h2>Title</h2>
+		</div>
+		<div class="col">
+			<input type="text" class="form-control form-control-lg is-valid" maxlength="100"
+				   placeholder="Enter question's title" value="Who is Mr.Heizenberg?" required>
+			<div class="valid-feedback fs-5">
+				Все хорошо!
+			</div>
+		</div>
+	</div>
+	<div class="row mb-4">
+		<div class="col-2">
+			<h2>Text</h2>
+		</div>
+		<div class="col">
+					<textarea class="form-control border-dark is-invalid" maxlength="1000"
+							  placeholder="Enter your question here" style="resize: none" rows="12" required></textarea>
+			<div class="invalid-feedback fs-5">
+				Вы должны ввести свой вопрос
+			</div>
+		</div>
+	</div>
+
+	<div class="row mb-4">
+		<div class="col-2">
+			<h2>Tags</h2>
+		</div>
+		<div class="col">
+			<input type="text" class="form-control form-control-lg is-valid" maxlength="100"
+				   placeholder="Enter here question's tags" value="genius, movie, chemistry" required>
+			<div class="valid-feedback fs-5">
+				Все хорошо!
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-5 text-center">
+			<button type="button" class="btn btn-success btn-lg" onclick="location.href='{% url 'index' %}'">Ask</button>
+		</div>
+	</div>
+
+</div>

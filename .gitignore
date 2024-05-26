@@ -1,1 +1,11 @@
 .idea
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
+/shelf/
+/workspace.xml
+.askme_venv
+askme_venv/

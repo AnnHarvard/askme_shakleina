@@ -1,5 +1,3 @@
-from django.utils import timezone
-
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -21,8 +19,8 @@ class Question(models.Model):
     tags = models.ManyToManyField(Tag)
     like_number = models.IntegerField(default=0)
     user = models.ForeignKey(User, on_delete=models.PROTECT)
-    created_at = models.DateTimeField(auto_now_add=True, default=timezone.now)
-    updated_at = models.DateTimeField(auto_now=True, default=timezone.now)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
@@ -33,8 +31,8 @@ class Answer(models.Model):
     text = models.TextField()
     like_number = models.IntegerField(default=0)
     user = models.ForeignKey(User, on_delete=models.PROTECT)
-    created_at = models.DateTimeField(auto_now_add=True, default=timezone.now)
-    updated_at = models.DateTimeField(auto_now=True, default=timezone.now)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.text
@@ -63,5 +61,8 @@ class AnswerLike(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user: User = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.user.username}"

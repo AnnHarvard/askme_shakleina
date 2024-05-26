@@ -45,11 +45,21 @@ class QuestionLike(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     status = models.IntegerField(default=0)
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['question', 'user'], name='unique_question_like'),
+        ]
+
 
 class AnswerLike(models.Model):
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     status = models.IntegerField(default=0)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['answer', 'user'], name='unique_answer_like'),
+        ]
 
 
 class Profile(models.Model):

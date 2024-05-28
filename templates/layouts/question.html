@@ -10,8 +10,13 @@
 						style="width:100%; height: 100%"
 				/>
 			</div>
-			<div class="input-group flex-nowrap">
-				<input type="number" value="5" class="form-control mx-5 border-2"/>
+			<div class="d-flex justify-content-center">
+				<button class="btn btn-block btn-primary" style="background-color: #052c65"><i class="fa fa-thumbs-up">Like</i>
+				</button>
+				<span class="badge ms-2"
+					  style="background-color: #f8f9fa; border: 1px solid #007bff; color: #007bff; padding: 0.5em 1em; border-radius: 0.25em; display: flex; align-items: center; justify-content: center;">
+    				{{ item.like_number }} Likes
+				</span>
 			</div>
 		</div>
 		<div class="col">
@@ -23,11 +28,11 @@
 					{{ item.text }}
 				</p>
 				<div class="row">
-					<a class="col-4" href="/question.html">answers (3)</a>
 					<div class="col-8">
 						<span>Tags</span>
-						<a href="{%url 'tag' tag_name="black-jack"%}">black-jack</a>
-						<a href="{%url 'tag' tag_name="bender"%}">bender</a>
+						{% for tag in item.tags.all %}
+							<a href="{% url 'tag' tag_name=tag.name %}">{{ tag.name }}</a>
+						{% endfor %}
 					</div>
 				</div>
 			</div>

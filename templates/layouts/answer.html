@@ -10,8 +10,12 @@
 						style="width:100%; height: 100%"
 				/>
 			</div>
-			<div class="input-group flex-nowrap">
-				<input type="number" value="5" class="form-control mx-5 border-2"/>
+			<div class="d-flex justify-content-center">
+				<button class="btn btn-block btn-primary"><i class="fa fa-thumbs-up">Like</i></button>
+				<span class="badge ms-2"
+					  style="background-color: #f8f9fa; border: 1px solid #007bff; color: #007bff; padding: 0.5em 1em; border-radius: 0.25em; display: flex; align-items: center; justify-content: center;">
+    				{{ item.like_number }} Likes
+				</span>
 			</div>
 		</div>
 		<div class="col">
@@ -20,8 +24,8 @@
 					{{ item.text }}
 				</p>
 				<div class="form-check">
-					<input class="form-check-input border-1 border-dark" type="checkbox" value="">
-					<label class="form-check-label">
+					<input class="form-check-input border-1 border-dark" type="checkbox" value="" {% if item.is_correct %}checked{% endif %}>
+					<label class="form-check-label" >
 						Correct!
 					</label>
 				</div>
@@ -29,3 +33,4 @@
 		</div>
 	</div>
 </article>
+

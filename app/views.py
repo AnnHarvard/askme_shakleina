@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from app.models import Question, Answer
 
 # Create your views here.
 QUESTIONS = [
@@ -33,19 +34,22 @@ def paginate(objects_list, request, per_page=10):
 
 
 def index(request):
-    page_obj = paginate(QUESTIONS, request, per_page=5)
+    questions = Question.objects.new()
+    page_obj = paginate(questions, request, per_page=5)
     return render(request, 'index.html', {"questions": page_obj})
 
 
 def hot(request):
-    page_obj = paginate(QUESTIONS[5:], request, per_page=5)
+    questions = Question.objects.hot()
+    page_obj = paginate(questions, request, per_page=5)
     return render(request, 'hot.html', {"questions": page_obj})
 
 
 def question(request, question_id):
-    item = QUESTIONS[question_id]
-    page_obj = paginate(ANSWERS, request, per_page=5)
-    return render(request, 'question_detail.html', {"question": item, "answers": page_obj})
+    question = get_object_or_404(Question, id=question_id)
+    answers = Answer.objects.filter(question=question)
+    page_obj = paginate(answers, request, per_page=5)
+    return render(request, 'question_detail.html', {"question": question, "answers": page_obj})
 
 
 def ask(request):
@@ -65,5 +69,6 @@ def edit_profile(request):
 
 
 def tag(request, tag_name):
-    page_obj = paginate(QUESTIONS, request, per_page=5)
+    questions = Question.objects.by_tag(tag_name)
+    page_obj = paginate(questions, request, per_page=5)
     return render(request, "tag.html", {"questions": page_obj, "tag_name": tag_name})

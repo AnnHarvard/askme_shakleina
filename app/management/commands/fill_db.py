@@ -16,16 +16,15 @@ class Command(BaseCommand):
         parser.add_argument('ratio', type=int, help='Defines the ratio of fake data to create')
 
     def handle(self, *args, **options):
-        # with connection.cursor() as cursor:
-            # cursor.execute("TRUNCATE TABLE app_questionlike RESTART IDENTITY CASCADE;")
+
 
         ratio = options['ratio']
-        # self.create_users_and_profiles(ratio)
-        # self.create_tags(ratio)
-        # self.create_questions(ratio * 10)
-        # self.create_answers(ratio * 100)
-        # self.create_question_likes(ratio * 100)
-        self.create_answer_likes(ratio * 1000)
+        self.create_users_and_profiles(ratio)
+        self.create_tags(ratio)
+        self.create_questions(ratio * 10)
+        self.create_answers(ratio * 100)
+        self.create_question_likes(ratio * 100)
+        self.create_answer_likes(ratio * 100)
 
     def create_users_and_profiles(self, ratio):
         users = [
@@ -115,14 +114,16 @@ class Command(BaseCommand):
                 if i % 10000 == 0:
                     self.stdout.write(self.style.SUCCESS(f'{i} passed'))
 
-        self.stdout.write(self.style.SUCCESS('started bulk_create'))
+        self.stdout.write(self.style.SUCCESS('started bulk_create\n'))
         QuestionLike.objects.bulk_create(question_likes)
         self.stdout.write(self.style.SUCCESS('started like_number update'))
-        for question in questions:
+        for i, question in enumerate(questions):
             if question_likes_count[question.id] > 0:
                 question.like_number += question_likes_count[question.id]
                 question.save()
-        self.stdout.write(self.style.SUCCESS(f'{len(question_likes)} answer likes created.'))
+            if i % 1000 == 0:
+                self.stdout.write(self.style.SUCCESS(f'{i} passed'))
+        self.stdout.write(self.style.SUCCESS(f'{len(question_likes)} question likes created.'))
 
     def create_answer_likes(self, ratio):
         self.stdout.write(self.style.SUCCESS('answer likes started.'))
@@ -148,11 +149,13 @@ class Command(BaseCommand):
                 if i % 10000 == 0:
                     self.stdout.write(self.style.SUCCESS(f'{i} passed'))
 
-        self.stdout.write(self.style.SUCCESS('started bulk_create'))
+        self.stdout.write(self.style.SUCCESS('started bulk_create\n'))
         AnswerLike.objects.bulk_create(answer_likes)
         self.stdout.write(self.style.SUCCESS('started like_number update'))
-        for answer in answers:
+        for i, answer in enumerate(answers):
             if answer_likes_count[answer.id] > 0:
                 answer.like_number += answer_likes_count[answer.id]
                 answer.save()
+            if i % 1000 == 0:
+                self.stdout.write(self.style.SUCCESS(f'{i} passed'))
         self.stdout.write(self.style.SUCCESS(f'{len(answer_likes)} answer likes created.'))

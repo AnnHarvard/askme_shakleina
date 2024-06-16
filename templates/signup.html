@@ -1,51 +1,26 @@
 {% extends "layouts/base.html" %}
 {% load static %}
+{% load django_bootstrap5 %}
 
-{% block login_placeholder %}
-	Enter here your login
-{% endblock %}
 
 {% block content %}
 	<div class="d-flex gap-3 mb-3 align-items-center">
-		<h1>Registration</h1>
+		<h1>Sign Up</h1>
+		<h3><a href="{% url "log_in" %}">Log In</a></h3>
 	</div>
-	<span class="fs-5" style="color: red"> Sorry, this email address already registered</span>
 	<div class="col-9 pt-4">
-		{% include 'layouts/edit.html' with login_placeholder="Enter here your login" email_placeholder="Enter here your email" nickname_placeholder="Enter here your nickname" %}
-
-		<div class="row mb-4">
-			<div class="col-2">
-				<h4>Password</h4>
-			</div>
-			<div class="col-8">
-				<input type="password" class="form-control form-control-lg border-dark" maxlength="100"
-					   placeholder="Enter here your password" required>
-			</div>
+		<div class="col-8">
+			<form method="post">
+				{% csrf_token %}
+				{% bootstrap_form form %}
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
 		</div>
 
-		<div class="row mb-4">
-			<div class="col-2">
-				<h4>Repeat password</h4>
-			</div>
-			<div class="col-8">
-				<input type="password" class="form-control form-control-lg border-dark" maxlength="100"
-					   placeholder="Repeat your password" required>
-			</div>
-		</div>
-
-		<div class="row mb-4">
-			<div class="col-2">
-				<h4>Upload avatar</h4>
-			</div>
-			<div class="col-8">
-				<input class="form-control form-control-lg border-dark" id="formFileSm" type="file">
-			</div>
-		</div>
-
-		<div class="row mb-3">
-			<div class="col-5 text-center ms-4">
-				<button type="button" class="btn btn-success btn-lg">Register!</button>
-			</div>
-		</div>
 	</div>
+
+{% endblock %}
+
+{% block main_classes %}
+	container-fluid container-lg mt-5
 {% endblock %}

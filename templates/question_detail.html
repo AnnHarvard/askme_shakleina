@@ -1,9 +1,9 @@
 {% extends "layouts/base.html" %}
 {% load static %}
-
+{% load django_bootstrap5 %}
 
 {% block content %}
-	<div class="d-flex gap-3 align-items-center">
+	<div class="d-flex gap-3 mb-3 align-items-center">
 		<h1>Question</h1>
 	</div>
 	<div class="col-9 pt-4">
@@ -11,8 +11,20 @@
 
 		<hr>
 		{% for answer in answers %}
-			{% include "layouts/answer.html" with item=answer %}
+			<div id="answer-{{ answer.id }}" class="answer">
+				{% include "layouts/answer.html" with item=answer %}
+			</div>
 		{% endfor %}
+		<h4> Answer this question</h4>
+		<form method="post">
+			{% csrf_token %}
+			{% bootstrap_form form %}
+			<button type="submit" class="btn btn-dark mb-4">Post</button>
+		</form>
 		{% include "layouts/pagination.html" with page_obj=answers %}
 	</div>
+{% endblock %}
+
+{% block main_classes %}
+	container-fluid container-lg mt-5
 {% endblock %}

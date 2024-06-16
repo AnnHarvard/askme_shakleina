@@ -1,14 +1,28 @@
 {% extends "layouts/base.html" %}
 {% load static %}
+{% load django_bootstrap5 %}
+
 
 {% block title %}
-<title>New question</title>
-{% endblock%}
+	<title>New question</title>
+{% endblock %}
 
 {% block content %}
-{% include 'layouts/ask.html' %}
+	{% load static %}
+	<div class="d-flex gap-3 mb-3 align-items-center">
+		<h1>New Question</h1>
+	</div>
+	<div class="col-9 pt-4">
+		<div class="col-10">
+			<form method="post">
+				{% csrf_token %}
+				{% bootstrap_form form %}
+				<button type="submit" class="btn btn-success btn-lg">ASK</button>
+			</form>
+		</div>
+	</div>
 {% endblock %}
 
 {% block main_classes %}
-container-fluid container-lg mt-5
+	container-fluid container-lg mt-5
 {% endblock %}

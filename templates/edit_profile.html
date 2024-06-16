@@ -1,37 +1,23 @@
 {% extends "layouts/base.html" %}
 {% load static %}
+{% load django_bootstrap5 %}
+
 
 
 {% block content %}
 	<div class="d-flex gap-3 mb-3 align-items-center">
-		<h1>Settings: Dr. Pepper</h1>
+		<h1>Settings: {{ username }}</h1>
 	</div>
 	<div class="col-9 pt-4">
-		{% include 'layouts/edit.html' with login_placeholder="dr_pepper" email_placeholder="dr.pepper@mail.ru" nickname_placeholder="DR. Pepper" %}
 
-		<div class="row mb-4">
-			<div class="col-2">
-				<h4>Upload avatar</h4>
-			</div>
-			<div class="col">
-				<div class="border mb-3" style="height: 100px; width:196.5px">
-					<img
-							src="{% static 'img/2233.jpg' %}"
-							class="img-fluid rounded-start"
-							alt="avatar"
-							style="width:196.5px;height:100px;object-fit: cover"
-					/>
-				</div>
-				<div class="col-8">
-					<input class="form-control form-control-lg border-dark" id="formFileSm" type="file">
-				</div>
-			</div>
-		</div>
-
-		<div class="row mb-3">
-			<div class="col-5 text-center ms-4">
-				<button type="button" class="btn btn-success btn-lg">Save</button>
-			</div>
-		</div>
+		<form method="post">
+			{% csrf_token %}
+			{% bootstrap_form form %}
+			<button type="submit" class="btn btn-success btn-lg">Save</button>
+		</form>
 	</div>
+{% endblock %}
+
+{% block main_classes %}
+	container-fluid container-lg mt-5
 {% endblock %}

@@ -16,7 +16,7 @@
 <body>
 <nav class="navbar border-bottom border-dark" style="background-color: #F0FFF0;">
 	<div class="container-sm-fluid container-lg">
-		<a class="navbar-brand ">AskShakleina</a>
+		<a class="navbar-brand" href="{% url 'index' %}">AskShakleina</a>
 		<form class="d-flex" role="search">
 			<input
 					class="form-control me-2 border-3"
@@ -28,18 +28,29 @@
 			{#			<button class="btn btn-success" type="submit">ASK!</button>#}
 		</form>
 
-		<div class="d-flex justify-content-between gap-3">
-			<div>
-				<img src="{% static 'img/2233.jpg' %}" class="rounded-5" width="50" height="50" alt=""/>
-			</div>
-			<div class="d-flex flex-column justify-content-between">
-				<div>Dr. Pepper</div>
+		{% if user.is_authenticated %}
+			<div class="d-flex justify-content-between gap-3">
 				<div>
-					<a href="{% url 'edit_profile' %}" class="me-2">Settings</a>
-					<a href="{% url 'index' %}">Log out</a>
+					<img src="{% static 'img/2233.jpg' %}" class="rounded-5" width="50" height="50" alt=""/>
+				</div>
+				<div class="d-flex flex-column justify-content-between">
+					<div>{{ username }}</div>
+					<div>
+						<a href="{% url 'edit_profile' %}" class="me-2">Settings</a>
+						<a href="{% url 'log_out' %}">Log out</a>
+					</div>
 				</div>
 			</div>
-		</div>
+		{% else %}
+			<div class="d-flex justify-content-between gap-2">
+				<div class="d-flex flex-column justify-content-between">
+					<div class="d-flex justify-content-evenly gap-2">
+						<a href="{% url 'log_in' %}">Log in</a>
+						<a href="{% url 'signup' %}">Register</a>
+					</div>
+				</div>
+			</div>
+		{% endif %}
 	</div>
 </nav>
 
@@ -52,30 +63,10 @@
 			<h3>Popular Tags</h3>
 			<div class="row">
 				<div class="col">
-					<button class="btn btn-primary" onclick="location.href='{% url 'tag' tag_name="perl" %}'"
-							style="margin: 3px;">perl
-					</button>
-					<button class="btn btn-secondary" onclick="location.href='{% url 'tag' tag_name="python" %}'"
-							style="margin: 3px;">python
-					</button>
-					<button class="btn btn-success" onclick="location.href='{% url 'tag' tag_name="SQL" %}'"
-							style="margin: 3px;">SQL
-					</button>
-					<button class="btn btn-danger" onclick="location.href='{% url 'tag' tag_name="TechnoPark" %}'"
-							style="margin: 3px;">TechnoPark
-					</button>
-					<button class="btn btn-warning" onclick="location.href='{% url 'tag' tag_name="django" %}'"
-							style="margin: 3px;">django
-					</button>
-					<button class="btn btn-info" onclick="location.href='{% url 'tag' tag_name="mail.ru" %}'"
-							style="margin: 3px;">mail.ru
-					</button>
-					<button class="btn btn-light" onclick="location.href='{% url 'tag' tag_name="Voloshin" %}'"
-							style="margin: 3px;">Voloshin
-					</button>
-					<button class="btn btn-dark" onclick="location.href='{% url 'tag' tag_name="Firefox" %}'"
-							style="margin: 3px;">Firefox
-					</button>
+					{% for tag in popular_tags %}
+						<button class="btn btn btn-primary" onclick="location.href='{% url 'tag' tag_name=tag.name %}'"
+								style="margin: 3px;">{{ tag.name }}</button>
+					{% endfor %}
 				</div>
 			</div>
 			<h3 class="mt-5">Best Members</h3>

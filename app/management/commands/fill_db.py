@@ -17,7 +17,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-
         ratio = options['ratio']
         self.create_users_and_profiles(ratio)
         self.create_tags(ratio)
@@ -138,7 +137,7 @@ class Command(BaseCommand):
             user_id = random.choice(users)
             like_tuple = (answer.id, user_id)
             if (like_tuple not in existing_likes
-                and not AnswerLike.objects.filter(answer_id=answer.id, user_id=user_id).exists()):
+                    and not AnswerLike.objects.filter(answer_id=answer.id, user_id=user_id).exists()):
                 existing_likes.add(like_tuple)
                 answer_like = AnswerLike(
                     answer_id=answer.id,

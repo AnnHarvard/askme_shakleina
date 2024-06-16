@@ -1,13 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Sum
 
 
 # Create your models here.
 
+class TagManager(models.Manager):
+    def get_popular(self):
+        return self.annotate(rating=Sum('question__like_number')).order_by('-rating')[:5]
+
+
 class Tag(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    objects = TagManager()
 
     def __str__(self):
         return self.name

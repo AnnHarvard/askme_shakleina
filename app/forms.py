@@ -90,10 +90,7 @@ class QuestionForm(forms.ModelForm):
 
 class AnswerForm(forms.ModelForm):
     text = forms.CharField(
-        widget=forms.Textarea(attrs={
-            'class': 'form-control',
-            'placeholder': 'Your answer...'
-        }),
+        widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Your answer...'}),
         label=''
     )
 

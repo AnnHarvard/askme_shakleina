@@ -56,7 +56,7 @@ def hot(request):
     return render(request, 'hot.html',
                   {"questions": page_obj, 'popular_tags': popular_tags, 'username': request.user.username})
 
-
+@csrf_protect
 @login_required(login_url='/log_in/', redirect_field_name='continue')
 def question(request, question_id):
     popular_tags = Tag.objects.get_popular()
@@ -82,7 +82,7 @@ def question(request, question_id):
                   {"question": question, "answers": page_obj, "form": answer_form, "username": request.user.username,
                    'popular_tags': popular_tags})
 
-
+@csrf_protect
 @login_required(login_url='/log_in/', redirect_field_name='continue')
 def ask(request):
     popular_tags = Tag.objects.get_popular()
@@ -127,7 +127,7 @@ def log_out(request):
     auth.logout(request)
     return redirect(reverse('index'))
 
-
+@csrf_protect
 def signup(request):
     popular_tags = Tag.objects.get_popular()
     if request.method == "GET":
@@ -146,7 +146,7 @@ def signup(request):
     return render(request, 'signup.html',
                   {'form': user_form, "username": request.user.username, 'popular_tags': popular_tags})
 
-
+@csrf_protect
 @login_required
 def edit_profile(request):
     popular_tags = Tag.objects.get_popular()

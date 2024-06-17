@@ -1,5 +1,7 @@
+from django.conf.urls.static import static
 from django.urls import path
 
+from AskMe_Shakleina import settings
 from app import views
 
 urlpatterns = [
@@ -13,3 +15,6 @@ urlpatterns = [
     path('tag/<str:tag_name>', views.tag, name='tag'),
     path('log_out/', views.log_out, name='log_out')
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

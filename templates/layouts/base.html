@@ -25,14 +25,16 @@
 					aria-label="Search"
 			/>
 			<input class="btn btn-success" type="button" value="Ask!" onclick="location.href='{% url 'ask' %}'">
-			{#			<button class="btn btn-success" type="submit">ASK!</button>#}
 		</form>
 
 		{% if user.is_authenticated %}
 			<div class="d-flex justify-content-between gap-3">
-				<div>
-					<img src="{% static 'img/2233.jpg' %}" class="rounded-5" width="50" height="50" alt=""/>
-				</div>
+				{% if user.profile.avatar %}
+					<img src="{{ user.profile.avatar.url }}" alt="Avatar" class="rounded-5" width="50" height="50">
+				{% else %}
+					<img src="{% static 'img/default_avatar.jpg' %}" alt="Avatar" class="rounded-5" width="50"
+						 height="50">
+				{% endif %}
 				<div class="d-flex flex-column justify-content-between">
 					<div>{{ username }}</div>
 					<div>

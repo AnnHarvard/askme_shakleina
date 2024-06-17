@@ -133,7 +133,7 @@ def signup(request):
     if request.method == "GET":
         user_form = RegisterForm()
     if request.method == "POST":
-        user_form = RegisterForm(request.POST)
+        user_form = RegisterForm(request.POST, request.FILES)
         if user_form.is_valid():
             user = user_form.save()
             if user is not None:

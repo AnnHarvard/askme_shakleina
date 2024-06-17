@@ -88,7 +88,7 @@ class AnswerLike(models.Model):
 
 class Profile(models.Model):
     user: User = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(null=True, blank=True)
+    avatar = models.ImageField(null=True, blank=True, upload_to='images')
 
     def __str__(self):
         return f"{self.user.username}"

@@ -2,7 +2,6 @@ import random
 from faker import Faker
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
-from django.db import connection
 
 from app.models import Question, Answer, Tag, QuestionLike, AnswerLike, Profile
 

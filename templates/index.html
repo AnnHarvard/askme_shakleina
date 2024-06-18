@@ -9,7 +9,7 @@
 	</div>
 	<div class="col-9 pt-4">
 		{% for question in questions %}
-			{% include 'layouts/question.html' with item=question %}
+				{% include 'layouts/question.html' with item=question %}
 		{% endfor %}
 		{% include 'layouts/pagination.html' with page_obj=questions %}
 	</div>

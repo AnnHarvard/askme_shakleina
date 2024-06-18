@@ -51,6 +51,18 @@ class ProfileEditForm(forms.ModelForm):
         model = User
         fields = ['email', 'username']
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exclude(id=self.instance.id).exists():
+            raise forms.ValidationError("Email is already in use.")
+        return email
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if User.objects.filter(username=username).exclude(id=self.instance.id).exists():
+            raise forms.ValidationError("Username is already in use.")
+        return username
+
     def save(self, commit=True, **kwargs):
         user = super().save(**kwargs)
         if commit:

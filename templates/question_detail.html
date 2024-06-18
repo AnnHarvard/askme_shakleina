@@ -7,13 +7,10 @@
 		<h1>Question</h1>
 	</div>
 	<div class="col-9 pt-4">
-		{% include 'layouts/question.html' with item=question %}
-
+			{% include 'layouts/question.html' with item=question %}
 		<hr>
 		{% for answer in answers %}
-			<div id="answer-{{ answer.id }}" class="answer">
-				{% include "layouts/answer.html" with item=answer %}
-			</div>
+			{% include "layouts/answer.html" with item=answer %}
 		{% endfor %}
 		<h4> Answer this question</h4>
 		<form method="post">

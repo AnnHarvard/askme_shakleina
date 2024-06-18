@@ -31,6 +31,13 @@ class QuestionManager(models.Manager):
     def by_tag(self, tag_name):
         return self.filter(tags__name=tag_name).order_by('-created_at')
 
+    def update_like_number(self, question):
+        question.like_number = question.questionlike_set.count()
+        question.save()
+
+    def has_user_liked(self, question, user):
+        return QuestionLike.objects.filter(question=question, user=user).exists()
+
 
 class Question(models.Model):
     title = models.CharField(max_length=100)
@@ -47,6 +54,13 @@ class Question(models.Model):
         return self.title
 
 
+class AnswerManager(models.Manager):
+
+    def update_like_number(self, answer):
+        answer.like_number = answer.answerlike_set.count()
+        answer.save()
+
+
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     text = models.TextField()
@@ -55,6 +69,8 @@ class Answer(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_correct = models.BooleanField(default=False)
+
+    objects = AnswerManager()
 
     def __str__(self):
         return self.text[:50] + "..."

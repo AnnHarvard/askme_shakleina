@@ -181,7 +181,7 @@ def edit_profile(request):
                                                  "username": request.user.username, 'popular_tags': popular_tags})
 
 
-@login_required(login_url="/log_in/")
+@login_required(login_url='/log_in/', redirect_field_name='continue')
 def tag(request, tag_name):
     popular_tags = Tag.objects.get_popular()
     questions = Question.objects.by_tag(tag_name)

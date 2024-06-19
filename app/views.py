@@ -29,7 +29,6 @@ ANSWERS = [
 def paginate(objects_list, request, per_page=10):
     page_num = request.GET.get('page', 1)
     paginator = Paginator(objects_list, per_page)
-    print("проверка")
     try:
         page_obj = paginator.page(page_num)
     except PageNotAnInteger:
@@ -56,6 +55,7 @@ def hot(request):
     return render(request, 'hot.html',
                   {"questions": page_obj, 'popular_tags': popular_tags, 'username': request.user.username})
 
+
 @csrf_protect
 @login_required(login_url='/log_in/', redirect_field_name='continue')
 def question(request, question_id):
@@ -81,6 +81,7 @@ def question(request, question_id):
     return render(request, 'question_detail.html',
                   {"question": question, "answers": page_obj, "form": answer_form, "username": request.user.username,
                    'popular_tags': popular_tags})
+
 
 @csrf_protect
 @login_required(login_url='/log_in/', redirect_field_name='continue')
@@ -127,6 +128,7 @@ def log_out(request):
     auth.logout(request)
     return redirect(reverse('index'))
 
+
 @csrf_protect
 def signup(request):
     popular_tags = Tag.objects.get_popular()
@@ -146,6 +148,7 @@ def signup(request):
     return render(request, 'signup.html',
                   {'form': user_form, "username": request.user.username, 'popular_tags': popular_tags})
 
+
 @csrf_protect
 @login_required
 def edit_profile(request):
@@ -162,6 +165,7 @@ def edit_profile(request):
                                                  "username": request.user.username, 'popular_tags': popular_tags})
 
 
+@login_required(login_url='/log_in/', redirect_field_name='continue')
 def tag(request, tag_name):
     popular_tags = Tag.objects.get_popular()
     questions = Question.objects.by_tag(tag_name)
